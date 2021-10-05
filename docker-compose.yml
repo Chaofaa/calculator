@@ -12,7 +12,7 @@ services:
     image: andrew/calculator
     restart: always
     volumes:
-      - C:\Users\kirgu\Documents\www-projects\calculator_task:/app
+      - C:\Users\kirgu\Documents\www-projects\basic_calculator:/app
     environment:
       - VIRTUAL_HOST=calculator.local
       - LETSENCRYPT_HOST=calculator.local
