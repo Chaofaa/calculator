@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  website:
+    container_name: calculator
+    ports:
+      - "8080:80"
+      - "6001:6001"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: andrew/calculator
+    restart: always
+    volumes:
+      - C:\Users\kirgu\Documents\www-projects\calculator_task:/app
+    environment:
+      - VIRTUAL_HOST=calculator.local
+      - LETSENCRYPT_HOST=calculator.local
+      - LETSENCRYPT_EMAIL=kirgudu12@gmail.com
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb_calculator
+    restart: always
+    ports:
+      - "4306:3306"
+    environment:
+      MARIADB_DATABASE: calculator
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: secret
+      MARIADB_ROOT_PASSWORD: secret
+
+
