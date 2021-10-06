@@ -10,7 +10,11 @@ class CalculatorController extends Controller {
 
     public function index(Request $request): Response
     {
-        $client_key = $request->cookie('client_key') ?: Uuid::uuid4();
+        $client_key = $request->cookie('client_key');
+
+        if ( ! $client_key || ! Uuid::isValid($client_key) ) {
+            $client_key = Uuid::uuid4();
+        }
 
         return response(
             view('calculator')

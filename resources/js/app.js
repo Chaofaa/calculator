@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 import Vue from 'vue/dist/vue.js';
+import Swal from 'sweetalert2';
 
 const app = new Vue({
     el: '#app',
@@ -60,7 +61,13 @@ const app = new Vue({
                 value: value
             }).then(response => {
                 if (response.data.status === 'error') {
-                    alert('can\'t save');
+                    Swal.fire('Oops...', response.data.message, 'error')
+                }
+            }).catch(error => {
+                if (error.response.data.message) {
+                    Swal.fire('Oops...', error.response.data.message, 'error')
+                } else {
+                    alert('error');
                 }
             });
         },
@@ -72,6 +79,12 @@ const app = new Vue({
             }).then(response => {
                 if (response.data.status === 'success') {
                     this.histories = response.data.histories;
+                } else {
+                    Swal.fire('Oops...', response.data.message, 'error')
+                }
+            }).catch(error => {
+                if (error.response.data.message) {
+                    Swal.fire('Oops...', error.response.data.message, 'error')
                 } else {
                     alert('error');
                 }
