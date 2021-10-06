@@ -22,7 +22,7 @@ class HistoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'key' => $this->faker->title,
+            'client_key' => $this->faker->uuid,
             'value' => $this->faker->numerify
         ];
     }

@@ -56,7 +56,7 @@ const app = new Vue({
             this.histories.unshift(value);
 
             axios.post('/api/history/store', {
-                key: 'test',
+                client_key: client_key,
                 value: value
             }).then(response => {
                 if (response.data.status === 'error') {
@@ -65,7 +65,11 @@ const app = new Vue({
             });
         },
         getHistories() {
-            axios.get('/api/history/' + this.max_histories,).then(response => {
+            axios.get('/api/history/' + this.max_histories, {
+                params: {
+                    client_key: client_key
+                }
+            }).then(response => {
                 if (response.data.status === 'success') {
                     this.histories = response.data.histories;
                 } else {

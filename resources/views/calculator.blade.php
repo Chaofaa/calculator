@@ -50,6 +50,9 @@
         </div>
     </div>
 
+    <script>
+        const client_key = '{{ $client_key }}';
+    </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

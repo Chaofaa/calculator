@@ -6,8 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property string $client_key
+ * @property string $value
  */
-class HistoryRequest extends FormRequest
+class CreateHistoryRequest extends FormRequest
 {
 
     /**
@@ -19,6 +20,7 @@ class HistoryRequest extends FormRequest
     {
         return [
             'client_key' => 'required|string|uuid',
+            'value' => 'required|string'
         ];
     }
 }

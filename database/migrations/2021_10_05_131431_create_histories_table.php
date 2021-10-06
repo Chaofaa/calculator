@@ -15,11 +15,11 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
-            $table->string('value')->nullable();
+            $table->string('client_key');
+            $table->string('value');
             $table->timestamps();
 
-            $table->index('key');
+            $table->index('client_key');
             $table->index('created_at');
         });
     }

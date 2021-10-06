@@ -9,7 +9,7 @@ use Illuminate\Database\Query\Builder;
 
 /**
  * @property int $id
- * @property string $key
+ * @property string $client_key
  * @property string|null $value
  *
  * @property string|Carbon $created_at
@@ -25,7 +25,7 @@ class History extends Model
     protected $table = 'histories';
 
     protected $fillable = [
-        'key',
+        'client_key',
         'value'
     ];
 

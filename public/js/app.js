@@ -2116,7 +2116,7 @@ var app = new (vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_0___default())({
       if (this.histories.length >= this.max_histories) this.histories.pop();
       this.histories.unshift(value);
       axios.post('/api/history/store', {
-        key: 'test',
+        client_key: client_key,
         value: value
       }).then(function (response) {
         if (response.data.status === 'error') {
@@ -2127,7 +2127,11 @@ var app = new (vue_dist_vue_js__WEBPACK_IMPORTED_MODULE_0___default())({
     getHistories: function getHistories() {
       var _this = this;
 
-      axios.get('/api/history/' + this.max_histories).then(function (response) {
+      axios.get('/api/history/' + this.max_histories, {
+        params: {
+          client_key: client_key
+        }
+      }).then(function (response) {
         if (response.data.status === 'success') {
           _this.histories = response.data.histories;
         } else {
