@@ -10,12 +10,12 @@ ADD . /app
 WORKDIR /app
 
 # Install composer
-RUN chmod +x composer-setup.sh
-RUN ./composer-setup.sh
-RUN rm composer-setup.sh
+#RUN chmod +x composer-setup.sh
+#RUN ./composer-setup.sh
+#RUN rm composer-setup.sh
 
 # Install packages
-ENV COMPOSER_ALLOW_SUPERUSER 1
+#ENV COMPOSER_ALLOW_SUPERUSER 1
 #RUN php composer.phar install --no-progress
 
 # Add CRON job
